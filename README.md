@@ -73,6 +73,100 @@ Secures API endpoints by implementing stateless authentication. Ensures users’
 
 ---
 
+## 🗄️ Database Design
+
+The application relies on a well-structured relational database to manage users, listings, transactions, and reviews. Below are the core entities and their relationships:
+
+---
+
+### 👤 **Users**
+
+Represents individuals using the platform, either as guests or hosts.
+
+**Key Fields:**
+
+* `id`: Primary key
+* `username`: Unique user handle
+* `email`: Contact email
+* `password_hash`: Encrypted password
+* `is_host`: Boolean indicating if the user can post listings
+
+---
+
+### 🏠 **Properties**
+
+Details about homes/apartments available for booking.
+
+**Key Fields:**
+
+* `id`: Primary key
+* `owner_id`: Foreign key to `Users`
+* `title`: Name of the listing
+* `description`: Text description
+* `price_per_night`: Numeric value
+
+**Relationships:**
+
+* Each property belongs to one user (host)
+* A user can have multiple properties
+
+---
+
+### 📅 **Bookings**
+
+Represents a guest’s reservation of a property.
+
+**Key Fields:**
+
+* `id`: Primary key
+* `property_id`: Foreign key to `Properties`
+* `user_id`: Foreign key to `Users`
+* `check_in_date`: Start date
+* `check_out_date`: End date
+
+**Relationships:**
+
+* Each booking is linked to one property and one user
+
+---
+
+### ⭐ **Reviews**
+
+Feedback from guests after a stay.
+
+**Key Fields:**
+
+* `id`: Primary key
+* `property_id`: Foreign key to `Properties`
+* `user_id`: Foreign key to `Users`
+* `rating`: Integer score (1–5)
+* `comment`: Text field
+
+**Relationships:**
+
+* One user can write multiple reviews
+* One property can have multiple reviews
+
+---
+
+### 💳 **Payments**
+
+Handles payment tracking for bookings.
+
+**Key Fields:**
+
+* `id`: Primary key
+* `booking_id`: Foreign key to `Bookings`
+* `amount`: Paid amount
+* `status`: e.g., “pending”, “completed”, “failed”
+* `transaction_date`: Timestamp of payment
+
+**Relationships:**
+
+* One booking can have one payment
+
+---
+
 ## ✨Task 4: Feature Breakdown
 
 The Airbnb Clone project includes several core features essential to a functional and scalable property booking platform. Each feature is designed with both user experience and backend logic in mind.
