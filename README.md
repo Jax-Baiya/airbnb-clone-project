@@ -257,3 +257,43 @@ All traffic is expected to run over HTTPS to encrypt communication. Tokens have 
 
 ---
 
+## 🔄 CI/CD Pipeline
+
+Continuous Integration and Continuous Deployment (CI/CD) are essential for modern backend projects. They help automate the development process, ensuring reliable testing, building, and deployment without manual errors.
+
+---
+
+### 🧪 Continuous Integration (CI)
+
+CI ensures that any new code pushed to the repository is automatically tested and validated. This minimizes bugs and conflicts early in the development process.
+
+**Tools Used:**
+
+* **GitHub Actions**: Automatically runs tests, checks formatting, and ensures that changes do not break existing code.
+
+**Typical Workflow:**
+
+* Developer pushes code → GitHub Actions runs checks (e.g., linting, tests) → Code is approved or rejected
+
+---
+
+### 🚀 Continuous Deployment (CD)
+
+CD automates the deployment of code once it's passed CI checks. This allows for fast iteration and consistent delivery to staging or production environments.
+
+**Tools & Setup:**
+
+* **Docker**: Packages the application and dependencies in a container, ensuring consistency across environments.
+* **GitHub Actions**: Can be configured to deploy to cloud services (e.g., Heroku, AWS, Render) upon successful CI.
+
+---
+
+### 💡 Benefits of CI/CD:
+
+* Faster development cycles
+* Early detection of bugs
+* Safer deployments
+* Consistent environments from development to production
+
+---
+
